@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -15,5 +16,8 @@ typedef i8 b8;
 typedef i32 b32;
 typedef float f32;
 typedef double f64;
+
+void begin_drawing(void);
+int close_key_q(void);
 
 #endif
