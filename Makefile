@@ -3,7 +3,7 @@
 
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra -std=c99 -Isrc
-LDFLAGS = -lraylib -lX11
+LDFLAGS = -lraylib -lX11 -lm
 SRC     = src/main.c src/player.c
 OBJ     = build/main.o build/player.o
 OUT     = bin/main
