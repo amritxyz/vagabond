@@ -3,29 +3,40 @@
 
 #include "config.h"
 #include "main.h"
+#include "player.h"
+#include "types.h"
+
+/* Initial spawn position of player [center of the screen]. */
+Vector2 SCREEN_CENTER = { (f32)WINDOW_W/2, (f32)WINDOW_H/2 };
 
 void
-begin_drawing(void)
-{
-	BeginDrawing();
-		ClearBackground(BG_COLOR);
-		close_key_q();
-	EndDrawing();
-}
-
-int
-close_key_q(void)
+die(void)
 {
 	if (GetKeyPressed() == KEY_Q)
 		CloseWindow();
-	return -1;
 }
 
 int main(void)
 {
+	/* Initial Player Position */
 	InitWindow(WINDOW_W, WINDOW_H, TITLE);
 
-	while (!WindowShouldClose())
-		begin_drawing();
+	SetTargetFPS(CURRENT_FPS);
+
+	Player player = {
+		.position = SCREEN_CENTER,
+		.velocity = (Vector2){ 0 },
+		.rotation = 0,
+	};
+
+	while (!WindowShouldClose()) {
+		BeginDrawing();
+			player_update(&player);
+			ClearBackground(BG_COLOR);
+			player_draw(player);
+			die();
+		EndDrawing();
+	}
+	CloseWindow();
 	return 0;
 }

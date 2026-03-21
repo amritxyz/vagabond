@@ -2,21 +2,28 @@
 # See LICENSE file for copyright and license details.
 
 CC      = cc
-CFLAGS  = -Wall -Werror -Wextra -std=c99
+CFLAGS  = -Wall -Werror -Wextra -std=c99 -Isrc
 LDFLAGS = -lraylib -lX11
-SRC     = src/main.c
-OBJ     = build/main.o
+SRC     = src/main.c src/player.c
+OBJ     = build/main.o build/player.o
 OUT     = bin/main
-DEPS    = src/main.c src/config.h src/main.h
+HEADERS = src/config.h src/main.h src/player.h
+
 all: dirs $(OUT)
+
 dirs:
 	mkdir -p build bin
-$(OBJ): $(SRC) $(DEPS)
-	$(CC) $(CFLAGS) -c $(SRC) -o $(OBJ)
+
+build/%.o: src/%.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(OUT): $(OBJ)
 	$(CC) $(OBJ) $(LDFLAGS) -o $(OUT)
+
 run: all
 	./$(OUT)
+
 clean:
 	rm -rf build bin
+
 .PHONY: all dirs run clean
