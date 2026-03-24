@@ -11,5 +11,5 @@ cd vagabond && make run
 
 ## Dependencies
 
-- Raylib
+- [Raylib](https://www.raylib.com/).
 - C compiler [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/).
