@@ -4,7 +4,6 @@
 void
 monsters_draw(Monsters *monster)
 {
-
 	f32 delta = GetFrameTime();
 
 	/*
