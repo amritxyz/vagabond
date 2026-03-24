@@ -1,18 +1,18 @@
 #include "monsters.h"
 #include "config.h"
 
-/*
- * TODO
- * Spawn monsters in group with status `active` or `!active`
- * After passing the width or height of the screen it changes to `!active`
- * And destroyed and anoter group (array) of monsters starts to spawn.
- */
 void
 monsters_draw(Monsters *monster)
 {
 
 	f32 delta = GetFrameTime();
 
+	/*
+	 * TODO monsters_draw()
+	 * After drawing monsters and updating them
+	 * If the monster[i].position.x and ~position.y > WINDOW_W and WINDOW_H
+	 * Then re-spawn the monsters again with random co-ordinates.
+	 */
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++) {
 		monster[i].speed.x += monster[i].acceleration.x * delta;
 		monster[i].speed.y += monster[i].acceleration.y * delta;
@@ -25,7 +25,6 @@ monsters_draw(Monsters *monster)
 void
 monsters_update(Monsters *monster)
 {
-
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++)
 		DrawCircleV(monster[i].position, 20, MONSTERS_COLOR);
 }
