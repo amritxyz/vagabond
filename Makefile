@@ -4,10 +4,10 @@
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra -std=c99 -Isrc
 LDFLAGS = -lraylib -lX11 -lm
-SRC     = src/main.c src/player.c
-OBJ     = build/main.o build/player.o
+SRC     = src/main.c src/player.c src/monsters.c src/debug.c
+OBJ     = build/main.o build/player.o build/monsters.o build/debug.o
 OUT     = bin/main
-HEADERS = src/config.h src/main.h src/player.h
+HEADERS = src/config.h src/main.h src/player.h src/monsters.h src/debug.h
 
 all: dirs $(OUT)
 

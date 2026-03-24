@@ -5,13 +5,6 @@
 void
 player_update(Player *player)
 {
-#if DEBUG_INFO
-	const char *debug_info = TextFormat("Player Position X: %f, Y: %f\nRotation: %f\nVelocity: %f\nAccleration X: %f, Y: %f",
-							player->position.x, player->position.y,
-							player->rotation, player->velocity,
-							player->acceleration.x, player->acceleration.y);
-	DrawText(debug_info, (f32)DEBUG_FONT_SIZE/2, (f32)DEBUG_FONT_SIZE/3, DEBUG_FONT_SIZE, DEBUG_FG_COLOR);
-#endif
 	f32 delta = GetFrameTime();
 
 	player->acceleration = (Vector2) {0};
