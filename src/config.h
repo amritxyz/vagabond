@@ -28,4 +28,10 @@
 #define PLAYER_ENTITY_SIZE	20.0f		/* Player Size [Entity] */
 #define PLAYER_ENTITY_SHAPE	3.0f		/* Shape as Number [Angles], eg: 3 = Triangle & != 0,1,2 */
 
+/* Monster [Entity] */
+#define MONSTER_MAX_COUNT	5		/* Max monster count */
+#define MONSTER_COLOR		GRAY		/* Monster color */
+#define MONSTER_SPEED		10		/* Monster color */
+#define MONSTER_RADIUS		20		/* Monster radius (circle) */
+
 #endif	/* CONFIG_H */

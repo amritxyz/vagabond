@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include "main.h"
+#include "monsters.h"
 #include "player.h"
 #include "types.h"
 
@@ -32,8 +33,10 @@ int main(void)
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 			player_update(&player);
+			monsters_update();
 			ClearBackground(BG_COLOR);
 			player_draw(player);
+			monsters_draw();
 			die();
 		EndDrawing();
 	}
