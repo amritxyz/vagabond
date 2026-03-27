@@ -6,12 +6,10 @@ monsters_draw(Monsters *monster)
 {
 	f32 delta = GetFrameTime();
 
-	/*
-	 * TODO monsters_draw()
+	/* TODO monsters_draw()
 	 * After drawing monsters and updating them
 	 * If the monster[i].position.x and ~position.y > WINDOW_W and WINDOW_H
-	 * Then re-spawn the monsters again with random co-ordinates.
-	 */
+	 * Then re-spawn the monsters again with random co-ordinates. */
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++) {
 		monster[i].speed.x += monster[i].acceleration.x * delta;
 		monster[i].speed.y += monster[i].acceleration.y * delta;
@@ -28,10 +26,8 @@ monsters_update(Monsters *monster)
 		DrawCircleV(monster[i].position, 20, MONSTERS_COLOR);
 }
 
-/*
- * INFO monsters_init()
- * Spawn static monster at random coordinate in the first init of the game
- */
+/* INFO monsters_init()
+ * Spawn static monster at random coordinate in the first init of the game */
 void
 monsters_init(Monsters *monster)
 {
