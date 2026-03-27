@@ -3,11 +3,18 @@
 
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra -std=c99 -Isrc
-LDFLAGS = -lraylib -lX11 -lm
+LDFLAGS = -lraylib -lm
+
 SRC     = src/main.c src/player.c src/monsters.c src/debug.c
 OBJ     = build/main.o build/player.o build/monsters.o build/debug.o
 OUT     = bin/main
 HEADERS = src/config.h src/main.h src/player.h src/monsters.h src/debug.h
+
+SESSION_TYPE := $(shell echo $$XDG_SESSION_TYPE)
+
+ifeq ($(SESSION_TYPE),x11)
+	LDFLAGS += -lX11
+endif
 
 all: dirs $(OUT)
 
