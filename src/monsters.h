@@ -6,10 +6,11 @@
 #include "types.h"
 
 typedef struct {
+	Vector2 sposition;	/* Spawn position */
 	Vector2 position;
 	Vector2 speed;
 	Vector2 acceleration;
-	Vector2 path;
+	Vector2 direction;
 	b32 active;
 } Monsters;
 

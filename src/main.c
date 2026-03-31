@@ -28,10 +28,11 @@ int main(void)
 	Monsters monster[MONSTERS_LIMIT] = { 0 };
 	for (u8 i = 0; i < MONSTERS_LIMIT; ++i) {
 		Monsters monster[MONSTERS_LIMIT] = {
+			monster[i].sposition = (Vector2){ 0 },
 			monster[i].position = (Vector2){ 0 },
 			monster[i].speed = (Vector2){ 0 },
 			monster[i].acceleration = (Vector2){ MONSTERS_ACCELERATION, MONSTERS_ACCELERATION },
-			monster[i].path = (Vector2){ 0 },
+			monster[i].direction = (Vector2){ 0 },
 			monster[i].active = false
 		};
 	}

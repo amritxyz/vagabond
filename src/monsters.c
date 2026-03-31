@@ -43,6 +43,7 @@ monsters_init(Monsters *monster)
 		} while ( y > (WINDOW_H / 2 - 150) && y < (WINDOW_H / 2 + 150));
 
 		monster[i].position = (Vector2){ x, y };
+		monster[i].sposition = (Vector2) {x, y};
 		monster[i].speed    = (Vector2){ 50.0f, 50.0f };
 	}
 }

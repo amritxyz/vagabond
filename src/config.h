@@ -7,7 +7,7 @@
 #define WINDOW_H		800		/* Window height */
 #define TITLE			"vagabond"	/* Window title */
 #define CURRENT_FPS		60		/* FPS */
-#define BG_COLOR		WHITE		/* Main bg color */
+#define BG_COLOR		BLACK		/* Main bg color */
 
 /* Debug info */
 #define DEBUG_FONT_SIZE		20		/* Debug font size // TODO Make flexible */
@@ -30,7 +30,7 @@
 #define PLAYER_ENTITY_SHAPE	3.0f		/* Shape as Number [Angles], eg: 3 = Triangle & this_value !< 3 */
 
 /* Monster [Entity] */
-#define MONSTERS_LIMIT		5		/* Total number of monsters */
+#define MONSTERS_LIMIT		10		/* Total number of monsters */
 #define MONSTERS_COLOR		RED		/* Monster Color [Entity] TODO `Entities` */
 #define MONSTERS_SPEED
 #define MONSTERS_ACCELERATION	20		/* Acceleration for monster */
