@@ -6,15 +6,43 @@ monsters_draw(Monsters *monster)
 {
 	f32 delta = GetFrameTime();
 
-	/* TODO monsters_draw()
-	 * After drawing monsters and updating them
-	 * If the monster[i].position.x and ~position.y > WINDOW_W and WINDOW_H
-	 * Then re-spawn the monsters again with random co-ordinates. */
+	/* TODO Collision detection */
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++) {
-		monster[i].speed.x += monster[i].acceleration.x * delta;
-		monster[i].speed.y += monster[i].acceleration.y * delta;
-		monster[i].position.x += monster[i].speed.x * delta;
-		monster[i].position.y += monster[i].speed.y * delta;
+		if (monster[i].sposition.x < 300 && monster[i].sposition.y < 200) {
+			/* top left */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.x += monster[i].speed.x * delta;
+			monster[i].position.y += monster[i].speed.y * delta;
+		} else if (monster[i].sposition.x < 300 && monster[i].sposition.y > 600) {
+			/* bottom left */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.x += monster[i].speed.x * delta;
+			monster[i].position.y -= monster[i].speed.y * delta;
+		} else if (monster[i].sposition.x > 800 && monster[i].sposition.y < 300){
+			/* top right */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.x -= monster[i].speed.x * delta;
+			monster[i].position.y += monster[i].speed.y * delta;
+		} else if (monster[i].sposition.x > 800 && monster[i].sposition.y > 500){
+			/* bottom right */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.x -= monster[i].speed.x * delta;
+			monster[i].position.y -= monster[i].speed.y * delta;
+		} else if (monster[i].sposition.y < 300) {
+			/* top center */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.y += monster[i].speed.y * delta;
+		} else {
+			/* bottom center */
+			monster[i].speed.x += monster[i].acceleration.x * delta;
+			monster[i].speed.y += monster[i].acceleration.y * delta;
+			monster[i].position.y -= monster[i].speed.y * delta;
+		}
 	}
 	monsters_update(monster);
 }
