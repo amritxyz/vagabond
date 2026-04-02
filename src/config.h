@@ -26,13 +26,14 @@
 
 /* Player [Entity] customizations stuffs */
 #define PLAYER_ENTITY_COLOR	GRAY		/* Player Color [Entity] */
-#define PLAYER_ENTITY_SIZE	20.0f		/* Player Size [Entity] */
+#define PLAYER_ENTITY_SIZE	20.0f		/* Player Size / Radius [Entity] */
 #define PLAYER_ENTITY_SHAPE	3.0f		/* Shape as Number [Angles], eg: 3 = Triangle & this_value !< 3 */
 
 /* Monster [Entity] */
 #define MONSTERS_LIMIT		10		/* Total number of monsters */
 #define MONSTERS_COLOR		RED		/* Monster Color [Entity] TODO `Entities` */
-#define MONSTERS_SPEED
+#define MONSTERS_SIZE		20.0f		/* Monster Size / Radius [Entity] */
+#define MONSTERS_SPEED				/* TODO */
 #define MONSTERS_ACCELERATION	20		/* Acceleration for monster */
 
 #endif	/* CONFIG_H */

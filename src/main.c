@@ -1,12 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 #include <raylib.h>
 
+#include "collision.h"
 #include "config.h"
+#include "debug.h"
 #include "main.h"
 #include "monsters.h"
 #include "player.h"
+#include "resume.h"
 #include "types.h"
-#include "debug.h"
 
 /* Initial spawn position of player [center of the screen]. */
 Vector2 SCREEN_CENTER = { (f32)WINDOW_W/2, (f32)WINDOW_H/2 };
@@ -44,12 +46,11 @@ int main(void)
 	};
 
 	monsters_init(monster);
+	b32 monster_init_bool = true;
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
-			player_update(&player);
-			monsters_draw(monster);
 #if DEBUG_INFO
 		Debug_info debug_info = {
 			.player_position = player.position,
@@ -59,7 +60,19 @@ int main(void)
 		};
 		debug_info_show(&debug_info);
 #endif
-			player_draw(player);
+			if (!collision(monster, &player)) {
+				player_update(&player);
+				monsters_draw(monster);
+				player_draw(player);
+				monster_init_bool = false;
+			} else if (!restart_exit()) {
+				if (!monster_init_bool)
+					monsters_init(monster);
+				player.position = SCREEN_CENTER;
+				player_update(&player);
+				monsters_draw(monster);
+				player_draw(player);
+			}
 			die();
 		EndDrawing();
 	}

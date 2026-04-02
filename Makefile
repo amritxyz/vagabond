@@ -3,12 +3,12 @@
 
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra -std=c99 -Isrc
-LDFLAGS = -lraylib -lm
+LDFLAGS = -lraylib -lraygui -lm
 
-SRC     = src/main.c src/player.c src/monsters.c src/debug.c
-OBJ     = build/main.o build/player.o build/monsters.o build/debug.o
+SRC     = src/main.c src/player.c src/monsters.c src/debug.c src/collision.c src/resume.c
+OBJ     = build/main.o build/player.o build/monsters.o build/debug.o src/collision.o src/resume.o
 OUT     = bin/main
-HEADERS = src/config.h src/main.h src/player.h src/monsters.h src/debug.h
+HEADERS = src/config.h src/main.h src/player.h src/monsters.h src/debug.h src/collision.h src/resume.h
 
 SESSION_TYPE := $(shell echo $$XDG_SESSION_TYPE)
 
