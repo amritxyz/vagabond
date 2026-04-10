@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef RESUME_H
 #define RESUME_H
 

@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+#pragma once
+
 #ifndef CONFIG_H
 #define CONFIG_H
 
