@@ -1,4 +1,3 @@
-#include "collision.h"
 #include "monsters.h"
 #include "config.h"
 
