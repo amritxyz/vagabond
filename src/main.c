@@ -62,7 +62,7 @@ int main(void)
 #endif
 			if (!collision(monster, &player)) {
 				player_update(&player);
-				monsters_draw(monster);
+				monsters_update(monster);
 				player_draw(player);
 				monster_init_bool = false;
 			} else if (!restart_exit()) {
@@ -70,7 +70,7 @@ int main(void)
 					monsters_init(monster);
 				player.position = SCREEN_CENTER;
 				player_update(&player);
-				monsters_draw(monster);
+				monsters_update(monster);
 				player_draw(player);
 			}
 			die();

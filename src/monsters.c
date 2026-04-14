@@ -2,7 +2,7 @@
 #include "config.h"
 
 void
-monsters_draw(Monsters *monster)
+monsters_update(Monsters *monster)
 {
 	f32 delta = GetFrameTime();
 
@@ -44,11 +44,11 @@ monsters_draw(Monsters *monster)
 			monster[i].position.y -= monster[i].speed.y * delta;
 		}
 	}
-	monsters_update(monster);
+	monsters_draw(monster);
 }
 
 void
-monsters_update(Monsters *monster)
+monsters_draw(Monsters *monster)
 {
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++)
 		DrawCircleV(monster[i].position, 20, MONSTERS_COLOR);
