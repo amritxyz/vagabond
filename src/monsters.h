@@ -1,5 +1,4 @@
-#ifndef MONSTERS_H
-#define MONSTERS_H
+#pragma once
 
 #include <raylib.h>
 
@@ -17,5 +16,3 @@ typedef struct {
 void monsters_draw(Monsters *monster);
 void monsters_update(Monsters *monster);
 void monsters_init(Monsters *monster);
-
-#endif	/* MONSTERS_H */

@@ -14,6 +14,61 @@
 Vector2 SCREEN_CENTER = { (f32)WINDOW_W/2, (f32)WINDOW_H/2 };
 
 void
+init_player(Player *player)
+{
+	player->position = SCREEN_CENTER;
+	player->velocity = (Vector2){ 0 };
+	player->rotation = (f32)0;
+}
+
+void
+init_monsters(Monsters *monsters)
+{
+	for (u8 i = 0; i < MONSTERS_LIMIT; ++i) {
+		monsters[i] = (Monsters) {
+			.sposition = (Vector2){ 0 },
+			.position = (Vector2){ 0 },
+			.speed = (Vector2){ 0 },
+			.acceleration = (Vector2){ MONSTERS_ACCELERATION, MONSTERS_ACCELERATION },
+			.direction = (Vector2){ 0 },
+			.active = false
+		};
+	}
+}
+
+#if DEBUG_INFO
+void
+debug_info(Player *player)
+{
+		Debug_info debug_info = {
+			.player_position = player->position,
+			.player_rotation = player->rotation,
+			.player_velocity = player->velocity,
+			.player_acceleration = player->acceleration
+		};
+		debug_info_show(&debug_info);
+}
+#endif
+
+void
+collision_detect(Monsters *monster, Player *player, b32 *monster_init_bool)
+{
+	if (!collision(monster, player)) {
+		player_update(player);
+		monsters_update(monster);
+		player_draw(*player);
+		monster_init_bool = false;
+	} else if (!restart_exit()) {
+		if (!monster_init_bool)
+			monsters_init(monster);
+		player->position = SCREEN_CENTER;
+		player_update(player);
+		monsters_update(monster);
+		player_draw(*player);
+	}
+}
+
+void
 die(void)
 {
 	if (GetKeyPressed() == KEY_Q)
@@ -27,53 +82,27 @@ int main(void)
 
 	SetTargetFPS(CURRENT_FPS);
 
-	Monsters monster[MONSTERS_LIMIT] = { 0 };
-	for (u8 i = 0; i < MONSTERS_LIMIT; ++i) {
-		Monsters monster[MONSTERS_LIMIT] = {
-			monster[i].sposition = (Vector2){ 0 },
-			monster[i].position = (Vector2){ 0 },
-			monster[i].speed = (Vector2){ 0 },
-			monster[i].acceleration = (Vector2){ MONSTERS_ACCELERATION, MONSTERS_ACCELERATION },
-			monster[i].direction = (Vector2){ 0 },
-			monster[i].active = false
-		};
-	}
+	Monsters monsters[MONSTERS_LIMIT];
+	init_monsters(monsters);
 
-	Player player = {
-		.position = SCREEN_CENTER,
-		.velocity = (Vector2){ 0 },
-		.rotation = (f32)0,
-	};
+	Player player;
+	init_player(&player);
 
-	monsters_init(monster);
+	monsters_init(monsters);
 	b32 monster_init_bool = true;
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
-			ClearBackground(BG_COLOR);
+
 #if DEBUG_INFO
-		Debug_info debug_info = {
-			.player_position = player.position,
-			.player_rotation = player.rotation,
-			.player_velocity = player.velocity,
-			.player_acceleration = player.acceleration
-		};
-		debug_info_show(&debug_info);
+		/* INFO change `DEBUG_INFO` to 1 or 0 to enable or disable debug
+		   info respectively */
+		debug_info(&player);
 #endif
-			if (!collision(monster, &player)) {
-				player_update(&player);
-				monsters_update(monster);
-				player_draw(player);
-				monster_init_bool = false;
-			} else if (!restart_exit()) {
-				if (!monster_init_bool)
-					monsters_init(monster);
-				player.position = SCREEN_CENTER;
-				player_update(&player);
-				monsters_update(monster);
-				player_draw(player);
-			}
-			die();
+		ClearBackground(BG_COLOR);
+		collision_detect(monsters, &player, &monster_init_bool);
+		die();
+
 		EndDrawing();
 	}
 	CloseWindow();

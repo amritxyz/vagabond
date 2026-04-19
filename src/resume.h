@@ -1,8 +1,5 @@
-#ifndef RESUME_H
-#define RESUME_H
+#pragma once
 
 #include "types.h"
 
 i32 restart_exit(void);
-
-#endif /* RESUME_H */

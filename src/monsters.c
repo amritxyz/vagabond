@@ -51,7 +51,7 @@ void
 monsters_draw(Monsters *monster)
 {
 	for (u8 i = 0; i < MONSTERS_LIMIT; i++)
-		DrawCircleV(monster[i].position, 20, MONSTERS_COLOR);
+		DrawCircleV(monster[i].position, MONSTERS_SIZE, MONSTERS_COLOR);
 }
 
 /* INFO monsters_init()

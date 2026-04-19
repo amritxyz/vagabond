@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include <raylib.h>
 
@@ -16,5 +15,3 @@ typedef struct Player {
 
 void player_update(Player *player);
 void player_draw(Player player);
-
-#endif	/* PLAYER_H */

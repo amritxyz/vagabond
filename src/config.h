@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#ifndef CONFIG_H
-#define CONFIG_H
+#pragma once
 
 /* Main window */
 #define WINDOW_W		1200		/* Window width */
@@ -35,5 +34,3 @@
 #define MONSTERS_SIZE		20.0f		/* Monster Size / Radius [Entity] */
 #define MONSTERS_SPEED				/* TODO */
 #define MONSTERS_ACCELERATION	20		/* Acceleration for monster */
-
-#endif	/* CONFIG_H */

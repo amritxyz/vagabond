@@ -1,5 +1,4 @@
-#ifndef COLLISION_H
-#define COLLISION_H
+#pragma once
 
 #include <raylib.h>
 
@@ -13,5 +12,3 @@ typedef struct {
 } Collision;
 
 b32 collision(Monsters *, Player *);
-
-#endif /* COLLISION_H */

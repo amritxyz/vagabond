@@ -1,5 +1,4 @@
-#ifndef DEBUG_H
-#define DEBUG_H
+#pragma once
 
 #include <raylib.h>
 
@@ -16,6 +15,4 @@ typedef struct {
 } Debug_info ;
 
 void debug_info_show(Debug_info *);
-#endif
-
 #endif
